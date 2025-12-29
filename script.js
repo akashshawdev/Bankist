@@ -182,6 +182,26 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+  const deleteAcc = inputCloseUsername.value;
+  const pin = Number(inputClosePin.value);
+
+  if (currentAccount.userName === deleteAcc && currentAccount.pin === pin) {
+    const index = accounts.findIndex(
+      acc => acc.userName === currentAccount.userName
+    );
+
+    // Delete account
+    accounts.splice(index, 1);
+
+    // Hide UI
+    containerApp.style.opacity = 0;
+  }
+
+  inputCloseUsername.value = inputClosePin.value = '';
+});
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // // LECTURES
